@@ -73,7 +73,11 @@
 					</div>
 					<div class="slide">
 						<div class="slide__bg slide__bg--8"></div>
-						<h2 class="word word--8">Babooner</h2>
+						<h2 class="word word--8">Jumbuck</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--9"></div>
+						<h2 class="word word--9">Babooner</h2>
 					</div>
 				</div>
 				<nav class="slidenav">
@@ -450,49 +454,132 @@
 					// Effect 8
 					{
 						options: {
-							shapeColors: ['red','#000','#fff'],
-							shapeFill: false,
-							shapeStrokeWidth: 10
+							shapeColors: ['#35c394','#9985ee','#f54665','#4718f5','#f5aa18'],
+							shapesOnTop: true
 						},
 						hide: {
-							shapesAnimationOpts: {
-								duration: 250,
-								delay: (t,i) => i*20,
+							lettersAnimationOpts: {
+								duration: 300,
+								delay: (t,i)  => (t.parentNode.children.length-i-1)*30,
 								easing: 'easeOutExpo',
-								translateX: () => [0,anime.random(-200,200)],
-								translateY: () => [0,anime.random(-200,200)],
-								scale: () => [randomBetween(0.2,0.6),randomBetween(0.2,0.6)],  
-								rotate: () => [0,anime.random(-16,16)],
-								opacity: [
-									{value: 1, duration: 1, easing: 'linear', delay: (t,i) => i*20}, 
-									{value: 0, duration: 150, delay: 100, easing: 'easeOutQuad'}
-								]
+								opacity: 0,
+								translateY: (t,i) => i%2 === 0 ? '80%' : '-80%',
+								rotate: (t,i) => i%2 === 0 ? -25 : 25
+							},
+							shapesAnimationOpts: {
+								duration: 50,
+								easing: 'easeOutExpo',
+								translateX: t => t.dataset.tx,
+								translateY: t => t.dataset.ty,
+								scale: 0,
+								rotate: 0,
+								opacity: {
+									value: 0, 
+									duration: 50, 
+									easing: 'linear'
+								}
 							}
 						},
 						show: {
 							lettersAnimationOpts: {
 								duration: 400,
-								delay: (t,i) => i*60,
-								easing: 'easeOutExpo',
+								delay: (t,i)  => (t.parentNode.children.length-i-1)*80,
+								easing: 'easeOutElastic',
 								opacity: {
 									value: [0,1], 
 									duration: 100, 
 									easing: 'linear'
 								},
-								translateY: (t,i) => i%2 ? [anime.random(-350,-300),0] : [anime.random(300,350),0]
+								translateY: (t,i) => i%2 === 0 ? ['-80%', '0%'] : ['80%', '0%'],
+								rotate: [90,0]
 							},
 							shapesAnimationOpts: {
-								duration: 500,
-								delay: (t,i) => i*30,
+								duration: () => anime.random(1000,3000),
+								delay: (t,i) => i*20,
+								easing: 'easeOutElastic',
+								translateX: t => {
+									const tx = anime.random(-250,250);
+									t.dataset.tx = tx;
+									return [0,tx];
+								},
+								translateY: t => {
+									const ty = anime.random(-250,250);
+									t.dataset.ty = ty;
+									return [0,ty];
+								},
+								scale: t => {
+									const s = randomBetween(0.1,0.6);
+									t.dataset.s = s;
+									return [s,s];
+								},  
+								rotate: () => anime.random(-90,90),
+								opacity: {
+									value: 0.6, 
+									duration: 1000, 
+									easing: 'linear'
+								}
+							}
+						}
+					},
+					// Effect 9
+					{
+						options: {
+							shapeColors: ['#FD74FF','#3771FC','#7C5CE4','#542A95','#ACC7FE'],
+							shapeTypes: ['rect','polygon'],
+							totalShapes: 1
+						},
+						hide: {
+							lettersAnimationOpts: {
+								duration: () => anime.random(800,1000),
+								delay: () => anime.random(0,80),
+								easing: 'easeInOutExpo',
+								opacity: 0,
+								translateY: '300%',
+								rotateZ: () => anime.random(-50,50)
+							},
+							shapesAnimationOpts: {
+								duration: 350,
 								easing: 'easeOutExpo',
-								translateX: () => [0,anime.random(-200,200)],
-								translateY: () => [0,anime.random(-200,200)],
-								scale: () => [randomBetween(0.2,0.6),randomBetween(0.2,0.6)],  
-								rotate: () => [0,anime.random(-16,16)],
-								opacity: [
-									{value: 1, duration: 1, easing: 'linear'}, 
-									{value: 0, duration: 350, delay: 150, easing: 'easeOutQuad'}
-								]
+								translateX: t => [t.dataset.tx,anime.random(-25,25)],
+								translateY: t => [t.dataset.ty,anime.random(-25,25)],
+								scale: 1,
+								rotate: 0,
+								opacity: {
+									value: 0, 
+									duration: 200, 
+									easing: 'linear'
+								}
+							}
+						},
+						show: {
+							lettersAnimationOpts: {
+								duration: 800,
+								delay: () => anime.random(0,75),
+								easing: 'easeInOutExpo',
+								opacity: [0,1],
+								translateY: ['-300%','0%'],
+								rotate: () => [anime.random(-50,50), 0]
+							},
+							shapesAnimationOpts: {
+								duration: 2000,
+								easing: 'easeOutExpo',
+								translateY: t => {
+									const ty = anime.random(-300,300);
+									t.dataset.ty = ty;
+									return [anime.random(-25,25),ty];
+								},
+								scale: t => {
+									const s = randomBetween(1.5,2);
+									t.dataset.s = s;
+									return [s,s];
+								},  
+								rotate: () => anime.random(-45,45),
+								opacity: {
+									value: [0,0.9], 
+									duration: 600,
+									delay: 300,
+									easing: 'linear'
+								}
 							}
 						}
 					}

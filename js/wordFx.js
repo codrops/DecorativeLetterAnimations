@@ -188,7 +188,7 @@
                                     anime.remove(config.shapesAnimationOpts.targets);
                                     anime(config.shapesAnimationOpts);
                                 }
-                            }(letter), config.lettersAnimationOpts && config.lettersAnimationOpts.delay ? config.lettersAnimationOpts.delay(null,i) : 0);        
+                            }(letter), config.lettersAnimationOpts && config.lettersAnimationOpts.delay ? config.lettersAnimationOpts.delay(letter.DOM.el,i) : 0);        
                         }
                     }
                     if ( config.lettersAnimationOpts ) {

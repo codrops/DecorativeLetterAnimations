@@ -32,7 +32,8 @@ body {
 	--color-bg-slide-5: #5900ce;
 	--color-bg-slide-6: #1b1a1a;
 	--color-bg-slide-7: #bf2525;
-	--color-bg-slide-8: #6a25bf;
+	--color-bg-slide-8: #d6d1d1;
+	--color-bg-slide-9: #000000;
 }
 
 a {
@@ -229,6 +230,10 @@ main {
 	outline: none;
 }
 
+.slidenav__item:hover {
+	opacity: 0.6;
+}
+
 .slidenav__item--next .icon {
 	transform: rotate(180deg);
 }
@@ -300,6 +305,14 @@ main {
 }
 
 .word--8 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: lowercase;
+	letter-spacing: -0.05em;
+	color: #0800ff;
+}
+
+.word--9 {
 	font-family: 'Montserrat Alternates', serif;
 	font-weight: 700;
 	text-transform: uppercase;
