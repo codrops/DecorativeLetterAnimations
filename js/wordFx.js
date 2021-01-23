@@ -146,7 +146,7 @@
             window.addEventListener('resize', debounce(() => {
                 winsize = {width: window.innerWidth, height: window.innerHeight};
                 this.DOM.svg.setAttribute('width', `${winsize.width}px`);
-                this.DOM.svg.setAttribute('height',`${winsize.width}px`);
+                this.DOM.svg.setAttribute('height',`${winsize.height}px`);
                 this.DOM.svg.setAttribute('viewbox',`0 0 ${winsize.width} ${winsize.height}`);
             }, 20));
         }
@@ -154,7 +154,7 @@
             this.DOM.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             this.DOM.svg.setAttribute('class', 'shapes');
             this.DOM.svg.setAttribute('width', `${winsize.width}px`);
-            this.DOM.svg.setAttribute('height',`${winsize.width}px`);
+            this.DOM.svg.setAttribute('height',`${winsize.height}px`);
             this.DOM.svg.setAttribute('viewbox',`0 0 ${winsize.width} ${winsize.height}`);
             if ( this.options.shapesOnTop ) {
                 this.DOM.el.parentNode.insertBefore(this.DOM.svg, this.DOM.el.nextSibling);
